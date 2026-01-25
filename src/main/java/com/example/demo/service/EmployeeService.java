@@ -5,8 +5,8 @@ import com.example.demo.model.Employee;
 import java.util.List;
 
 public interface EmployeeService {
-
     List<Employee> findAll();
     Employee findById(int id);
-    int updateByValue(String name, String mobileNo);
+    String updateByValue(Employee e);
+    boolean deleteByValue(int id);
 }

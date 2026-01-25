@@ -1,84 +1,51 @@
 package com.example.demo.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Employee {
-    private int id;
+public class Employee implements Serializable {
+    private Integer id;
     private String name;
     private String address;
     private String mobileNo;
-    private int salary;
+    private Integer salary;
     private Date dob;
+    private Boolean active;
 
-    public Employee(int id, String name, String address, String mobileNo, int salary, Date dob, boolean isActive) {
-        this.id= id;
-        this.name= name;
-        this.address= address;
-        this.mobileNo= mobileNo;
-        this.salary= salary;
-        this.dob= dob;
-        this.isActive= isActive;
-    }
-
-    public Employee() {
-        //Empty For RowMapper :)
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public Employee() {}
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public Employee(Integer id, String name, String address, String mobileNo, Integer salary, Date dob, Boolean active) {
         this.id = id;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
+        this.name = name;
         this.address = address;
-    }
-
-    public String getMobileNo() {
-        return mobileNo;
-    }
-
-    public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public void setSalary(int salary) {
         this.salary = salary;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
         this.dob = dob;
+        this.active = active;
     }
 
-    public boolean isActive() {
-        return isActive;
-    }
+    // getters & setters
+    public void setId(Integer id) { this.id = id; }
 
-    public void setActive(boolean active) {
-        isActive = active;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    private boolean isActive;
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+
+    public String getMobileNo() { return mobileNo; }
+    public void setMobileNo(String mobileNo) { this.mobileNo = mobileNo; }
+
+    public Integer getSalary() { return salary; }
+    public void setSalary(Integer salary) { this.salary = salary; }
+
+    public Date getDob() { return dob; }
+    public void setDob(Date dob) { this.dob = dob; }
+
+    public Boolean getActive() { return active; }
+    public void setActive(Boolean active) { this.active = active; }
 }

@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dao.EmployeeDao;
 import com.example.demo.model.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +12,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeDao employeeDao;
 
-    @Autowired
     public EmployeeServiceImpl(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }
@@ -22,13 +21,25 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeDao.findAll();
     }
 
+    @Cacheable(value = "employee", key ="#id")
     @Override
     public Employee findById(int id) {
-        return employeeDao.findById(id);
+        Employee emp = employeeDao.findById(id);
+        return emp;
     }
 
     @Override
-    public int updateByValue(String name, String mobileNo) {
-        return employeeDao.updateByValue(name, mobileNo);
+    public String updateByValue(Employee e) {
+
+        int row  =  employeeDao.updateByValue(e);
+        if(row> 0){
+            return "Successfully Updated";
+        }else
+            return "No Record Updated";
+    }
+
+    @Override
+    public boolean deleteByValue(int id) {
+        return employeeDao.deleteByvalue(id)>0;
     }
 }
