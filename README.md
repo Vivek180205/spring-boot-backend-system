@@ -1,2 +1,27 @@
-# SpringBoot
-RESTful api using SpringBoot
+# Spring Boot Backend System
+
+A Java Spring Boot backend application demonstrating real-world backend practices
+including authentication, role-based access, REST APIs, and database integration.
+
+## Features
+- Session-based authentication
+- Role-based authorization (ADMIN / USER)
+- CRUD APIs
+- PostgreSQL integration using JDBC/JdbcTemplate
+- Centralized exception handling
+- Clean layered architecture
+
+## Tech Stack
+- Java
+- Spring Boot
+- PostgreSQL
+- JDBC / JdbcTemplate
+- Git & GitHub
+
+## Project Structure
+Controller → Service → DAO → Database
+
+## How it works
+The application exposes REST APIs that handle requests through controllers,
+process business logic in services, interact with the database via DAO layer,
+and return standardized JSON responses.
