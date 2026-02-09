@@ -2,7 +2,9 @@ package com.example.demo.config;
 
 import com.example.demo.security.JwtAuthFilter;
 import com.example.demo.security.JwtUtil;
+import com.example.demo.security.OAuth2SuccessHandler;
 import com.example.demo.service.CustomUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +16,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -22,6 +25,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtUtil jwtUtil;
+
+    @Autowired
+    OAuth2SuccessHandler oAuth2SuccessHandler;
 
     public SecurityConfig( JwtUtil jwtUtil) {
         this.jwtUtil = jwtUtil;
@@ -49,7 +55,9 @@ public class SecurityConfig {
                 .addFilterBefore(
                         new JwtAuthFilter(jwtUtil),
                         UsernamePasswordAuthenticationFilter.class
-                );
+                )
+                .oauth2Login(oauth->oauth
+                        .successHandler(oAuth2SuccessHandler));
         return http.build();
     }
 
