@@ -11,6 +11,18 @@ including authentication, role-based access, REST APIs, and database integration
 - Centralized exception handling
 - Clean layered architecture
 
+## Authentication & Security
+
+This application implements secure authentication and authorization using:
+
+- JWT-based authentication for username/password login
+- OAuth2 (Google) login for third-party authentication
+- OAuth2 login issues a JWT for stateless API authorization
+- Role-based access control (USER, ADMIN)
+
+All secured endpoints require a valid JWT token in the `Authorization` header.
+
+
 ## Tech Stack
 - Java
 - Spring Boot
