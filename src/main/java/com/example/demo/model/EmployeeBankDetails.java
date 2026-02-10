@@ -5,6 +5,8 @@ public class EmployeeBankDetails {
     private Long empId;
     private String accType;
     private String username;
+    private String role;
+
 
     private String usernameHash;   // Hash
     private String password;   // hashed
@@ -14,6 +16,14 @@ public class EmployeeBankDetails {
     private String accNoMasked;
 
     private String accNoPlain;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getAccNoPlain() {
         return accNoPlain;
