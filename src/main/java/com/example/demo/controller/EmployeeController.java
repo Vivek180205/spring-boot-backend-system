@@ -81,6 +81,7 @@ public class EmployeeController {
             return ResponseEntity.badRequest().body("Employee not found");
         }
     }
+
 //RESUME FETCHING (PDF) N UPLOAD............................
     @GetMapping("/resume/{empId}")
     public ResponseEntity<byte[]> getOneWithResume(@PathVariable int empId){

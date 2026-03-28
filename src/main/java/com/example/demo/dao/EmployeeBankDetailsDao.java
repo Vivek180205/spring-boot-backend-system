@@ -58,6 +58,7 @@ public class EmployeeBankDetailsDao{
                         e.setEmpId(rs.getLong("emp_id"));
                         e.setUsername(rs.getString("username_plain"));
                         e.setPassword(rs.getString("password_hash"));
+                        e.setRole((rs.getString("role")));
 
                         return e;
                     }
@@ -76,7 +77,8 @@ public class EmployeeBankDetailsDao{
                     d.getAccNoLast4(),
                     d.getAccNoMasked(),
                     d.getAccType(),
-                    d.getUsername()
+                    d.getUsername(),
+                    d.getRole()
             );
     }
 
